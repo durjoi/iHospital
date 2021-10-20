@@ -1,9 +1,26 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import useAuth from '../../../Hooks/useAuth';
 
 const Registration = () => {
-    const handleFormSubmit = () => {
-        console.log('formsubmitted');
+    const {signUpUsingEmail} = useAuth();
+
+    const [password, setPassword] = useState('');
+    const [email, setEmail] = useState('');
+    
+    const handleFormSubmit = (e) => {
+        e.preventDefault();
+        signUpUsingEmail(email, password);
+        setEmail('');
+        setPassword('');
+    }
+
+    const handleEmailChange = (e) => {
+        setEmail(e.target.value);
+    }
+
+    const handlePasswordChange = (e) => {
+        setPassword(e.target.value);
     }
 
     return (
@@ -11,9 +28,9 @@ const Registration = () => {
             <h1>Registration</h1>
 
             <form onSubmit={handleFormSubmit}>
-                <input type="email" Placeholder="Your Email" />
+                <input type="email" onChange={handleEmailChange} value={email} required/>
                 <br/>
-                <input type="password" />
+                <input type="password" onChange={handlePasswordChange} value={password} required/>
                 <br/>
                 <input type="submit" value="Submit" />
                 <p>Already have an account? <Link to='/login'>Login</Link></p>

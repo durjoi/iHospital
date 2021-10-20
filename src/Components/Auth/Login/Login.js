@@ -1,28 +1,44 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import useFirebase from '../../../Hooks/useFirebase';
+import useAuth from '../../../Hooks/useAuth';
 
 const Login = () => {
-    const {user, signInUsingGoogle} = useFirebase();
+    const {user, signInUsingGoogle, signInUsingEmail, logOut} = useAuth();
     
-    const handleFormSubmit = () => {
-        console.log('formsubmitted');
+    const [password, setPassword] = useState('');
+    const [email, setEmail] = useState('');
+    
+    const handleFormSubmit = (e) => {
+        e.preventDefault();
+        signInUsingEmail(email, password);
+        setEmail('');
+        setPassword('');
+    }
+
+    const handleEmailChange = (e) => {
+        setEmail(e.target.value);
+    }
+
+    const handlePasswordChange = (e) => {
+        setPassword(e.target.value);
     }
 
     return (
         <div>
-            <h1>Login - {user.displayName}</h1>
+            <h1>Login - {user.email}</h1>
 
             <form onSubmit={handleFormSubmit}>
-                <input type="email" placeholder="Your Email" />
+            <input type="email" onChange={handleEmailChange} value={email} required/>
                 <br/>
-                <input type="password" />
+                <input type="password" onChange={handlePasswordChange} value={password} required/>
                 <br/>
                 <input type="submit" value="Submit" />
                 <p>New to iHospital? <Link to='/register'>Create New Account</Link></p>
             </form>
 
             <button onClick={signInUsingGoogle}>Google Signin</button>
+
+            <button onClick={logOut}>Log Out</button>
         </div>
     );
 };
