@@ -1,0 +1,15 @@
+.top_banner {
+    width: 100%;
+    display: flex;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    align-items: center;
+}
+
+.top_banner_content {
+    width: 50%;
+}
+
+.top_banner img {
+    height: 400px;
+}
