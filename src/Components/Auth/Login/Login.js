@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useHistory } from 'react-router-dom';
 import useAuth from '../../../Hooks/useAuth';
 
 const Login = () => {
@@ -7,6 +7,10 @@ const Login = () => {
     
     const [password, setPassword] = useState('');
     const [email, setEmail] = useState('');
+    const location = useLocation();
+    const history = useHistory()
+
+    const redirect_uri = location.state?.from || '/';
     
     const handleFormSubmit = (e) => {
         e.preventDefault();
@@ -23,6 +27,14 @@ const Login = () => {
         setPassword(e.target.value);
     }
 
+    const handleGoogleLogin = () => {
+        signInUsingGoogle().then(result => {
+            history.push(redirect_uri);
+        }).catch(function (error) {
+            console.error(error);
+          });
+    }
+
     return (
         <div>
             <h1>Login - {user.email}</h1>
@@ -36,9 +48,10 @@ const Login = () => {
                 <p>New to iHospital? <Link to='/register'>Create New Account</Link></p>
             </form>
 
-            <button onClick={signInUsingGoogle}>Google Signin</button>
+            <button onClick={handleGoogleLogin}>Google Signin</button>
 
             <button onClick={logOut}>Log Out</button>
+            <Link to='/booking'>Booking</Link>
         </div>
     );
 };
