@@ -1,37 +1,37 @@
 [{
         "id": 1,
         "title": "Vaccination",
-        "subtitle": "Get Covid 19 vaccine from your home",
-        "image": "https://i.ibb.co/WGGGy3m/Doctor-inject-vaccine-shot-to-patient-Covid-19-vaccination-concept.jpg"
+        "detail": "Vaccination is the administration of a vaccine to help the immune system develop protection from a disease.",
+        "image": "https://i.ibb.co/mhQ5pdB/download.png"
     },
     {
         "id": 2,
-        "title": "Telemedicine",
-        "subtitle": "24/7 telemedicine services available",
-        "image": "https://i.ibb.co/N1vpYxx/telemedicine.jpg"
+        "title": "Health Checkup Packages",
+        "detail": "What is a health check-up? Regular health checks can identify any early signs of health issues. When you have a health check, your doctor will talk with you about your medical history, your family's history of disease and your lifestyle, including your diet, weight, physical activity, alcohol use and whether you smoke.",
+        "image": "https://i.ibb.co/4T15m9S/cardiac-procedures-and-preventive-health-checkups-thumb.jpg"
     },
     {
         "id": 3,
         "title": "Blood Bank",
-        "subtitle": "24/7 Open blood bank",
-        "image": "https://i.ibb.co/kKRZ2Yz/Blood-donation-vector-illustration-isolated-on-white-background-Donate-blood-concept-with-Blood-Bag.jpg"
+        "detail": "Blood banking is the process that takes place in the lab to make sure that donated blood, or blood products, are safe before they are used in blood transfusions and other medical procedures.",
+        "image": "https://i.ibb.co/bbGk0ZC/303-3036306-jpg-bank-vector-blood-blood-donation-logo-png.png"
     },
     {
         "id": 4,
-        "title": "Vaccination",
-        "subtitle": "Get Covid 19 vaccine from your home",
-        "image": "https://i.ibb.co/WGGGy3m/Doctor-inject-vaccine-shot-to-patient-Covid-19-vaccination-concept.jpg"
+        "title": "Surgery Consultation",
+        "detail": "Surgery consultation, which is an essential part of any surgical procedure, involves making an assessment as to whether the patient is fit to undergo surgery and if the benefits of the procedure outweigh the risk.",
+        "image": "https://i.ibb.co/HGs3PqJ/295-2958158-surgeon-icon-surgeon-icon-png-transparent-png.png"
     },
     {
         "id": 5,
-        "title": "Telemedicine",
-        "subtitle": "24/7 telemedicine services available",
-        "image": "https://i.ibb.co/WGGGy3m/Doctor-inject-vaccine-shot-to-patient-Covid-19-vaccination-concept.jpg"
+        "title": "Appointment Booking",
+        "detail": "Visit the doctor, take the service based on your appointment. Get back to good health and happiness.",
+        "image": "https://i.ibb.co/r7kbLQz/unnamed.jpg"
     },
     {
         "id": 6,
-        "title": "Blood Bank",
-        "subtitle": "24/7 Open blood bank",
-        "image": "https://i.ibb.co/WGGGy3m/Doctor-inject-vaccine-shot-to-patient-Covid-19-vaccination-concept.jpg"
+        "title": "Emergency Services",
+        "detail": "Emergency Medical Services, more commonly known as EMS, is a system that provides emergency medical care. ",
+        "image": "https://i.ibb.co/vQPXxkC/83bfad5fbd39abbf7c35784a53a12c12e0823eb4.png"
     }
 ]

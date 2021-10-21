@@ -17,9 +17,9 @@ const Service = () => {
         <div>
             <section className="container">
                 <div className="top_banner" style={{ height: '100vh' }}>
-                    <div className="top_banner_content">
+                    <div className="top_banner_content pe-3">
                         <h2>{item?.title}</h2>
-                        <p>{item?.subtitle}</p>
+                        <p>{item?.detail}</p>
                     </div>
                     <div>
                         <img src={item?.image} />
