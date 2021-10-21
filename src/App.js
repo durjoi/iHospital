@@ -14,13 +14,14 @@ import AuthProvider from './Context/AuthProvider';
 import PrivateRoute from './PrivateRoute/PrivateRoute';
 
 function App() {
+
   return (
     <div className="App">
       <AuthProvider>
         
         <BrowserRouter>
         <Header></Header>
-          <Switch>
+            <Switch>
             <Route exact path="/login">
               <Login></Login>
             </Route>
@@ -46,6 +47,7 @@ function App() {
               <NotFound></NotFound>
             </Route>
           </Switch>
+          
           <Footer></Footer>
         </BrowserRouter>
       </AuthProvider>

@@ -6,6 +6,7 @@ initializeFirebase();
 
 const useFirebase = () => {
     const [user, setUser] = useState({});
+    const [loading, setLoading] = useState(true);
 
     const auth = getAuth();
 
@@ -44,19 +45,25 @@ const useFirebase = () => {
         onAuthStateChanged(auth, (user) => {
             if (user) {
                 setUser(user)
+            } else {
+
             };
+            setLoading(false);
         });
     }, [auth]);
 
 
     const logOut = () => {
         signOut(auth).then(() => {
-            setUser({});
-        })
+                setUser({});
+            })
+            .finally(() => {
+                setLoading(false);
+            })
     }
 
 
-    return { user, signInUsingGoogle, logOut, signUpUsingEmail, signInUsingEmail }
+    return { user, signInUsingGoogle, logOut, signUpUsingEmail, signInUsingEmail, loading }
 
 
 };
