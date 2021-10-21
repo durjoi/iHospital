@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const Service = ({title, subtitle, image, id}) => {
+const Item = ({title, subtitle, image, id}) => {
     return (
         <div className="col-md-4 mt-2 mb-5">
             <div className="card">
@@ -9,11 +9,11 @@ const Service = ({title, subtitle, image, id}) => {
                 <div className="card-body">
                     <h5 className="card-title">{title}</h5>
                     <p className="card-text">{subtitle}</p>
-                    <Link to={'/service/'+id}>View details</Link>
+                    <Link to={'/service/'+id}>View Details</Link>
                 </div>
             </div>
         </div>
     );
 };
 
-export default Service;
+export default Item;

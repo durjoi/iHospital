@@ -1,35 +1,38 @@
 import { useEffect, useState } from 'react';
-import { getAuth, GoogleAuthProvider, signInWithPopup, onAuthStateChanged, createUserWithEmailAndPassword, signOut, signInWithEmailAndPassword } from "firebase/auth";
+import { getAuth, updateProfile, GoogleAuthProvider, signInWithPopup, onAuthStateChanged, createUserWithEmailAndPassword, signOut, signInWithEmailAndPassword } from "firebase/auth";
 import initializeFirebase from '../Firebase/firebase.init';
 
 initializeFirebase();
 
 const useFirebase = () => {
     const [user, setUser] = useState({});
+
     const auth = getAuth();
 
     const googleProvider = new GoogleAuthProvider();
 
 
-    const signUpUsingEmail = (email, password) => {
+    const signUpUsingEmail = (email, password, name) => {
         createUserWithEmailAndPassword(auth, email, password)
-        .then((userCredential) => {
-            // Signed in 
-            const user = userCredential.user;
-            console.log(user);
-            // ...
-        })
+            .then((userCredential) => {
+                // Signed in 
+                const user = userCredential.user;
+
+                updateProfile(auth.currentUser, {
+                    displayName: name
+                }).then(() => {
+                    console.log('profile Updated');
+                })
+
+
+                // ...
+            })
     }
 
+
     const signInUsingEmail = (email, password) => {
-        signInWithEmailAndPassword(auth, email, password)
-        .then((userCredential) => {
-            // Signed in 
-            const user = userCredential.user;
-            // ...
-        }).catch((error) => {
-            console.log(error);
-          });
+        return signInWithEmailAndPassword(auth, email, password)
+
     }
 
     const signInUsingGoogle = () => {
@@ -39,8 +42,10 @@ const useFirebase = () => {
     // Observe User
     useEffect(() => {
         onAuthStateChanged(auth, (user) => {
-            if (user) setUser(user);
-          });
+            if (user) {
+                setUser(user)
+            };
+        });
     }, [auth]);
 
 
@@ -49,11 +54,11 @@ const useFirebase = () => {
             setUser({});
         })
     }
-    
 
-    return { user, signInUsingGoogle, logOut, signUpUsingEmail, signInUsingEmail}
 
-    
+    return { user, signInUsingGoogle, logOut, signUpUsingEmail, signInUsingEmail }
+
+
 };
 
 export default useFirebase;

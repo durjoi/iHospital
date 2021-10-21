@@ -3,7 +3,7 @@ import { Link, useLocation, useHistory } from 'react-router-dom';
 import useAuth from '../../../Hooks/useAuth';
 
 const Login = () => {
-    const {user, signInUsingGoogle, signInUsingEmail, logOut} = useAuth();
+    const { signInUsingGoogle, signInUsingEmail, updateUserProfile} = useAuth();
     
     const [password, setPassword] = useState('');
     const [email, setEmail] = useState('');
@@ -14,7 +14,15 @@ const Login = () => {
     
     const handleFormSubmit = (e) => {
         e.preventDefault();
-        signInUsingEmail(email, password);
+        signInUsingEmail(email, password)
+        .then((userCredential) => {
+            // Signed in 
+            history.push(redirect_uri);
+            // ...
+        }).catch((error) => {
+            console.log(error);
+        });
+
         setEmail('');
         setPassword('');
     }
@@ -36,23 +44,32 @@ const Login = () => {
     }
 
     return (
-        <div>
-            <h1>Login - {user.email}</h1>
+        <div className="d-flex justify-content-center align-items-center" style={{ height: '100vh' }}>
+            <div className="card" style={{ width:'30%' }}>
+                <div className="card-body">
+                    <h5 className="card-title text-center">Login</h5>
+                    <form onSubmit={handleFormSubmit} className="text-left">
+                        <div className="mb-3">
+                            <label for="exampleInputEmail1" className="form-label">Email address</label>
+                            <input type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" onChange={handleEmailChange} value={email} required/>
+                            <div id="emailHelp" className="form-text">We'll never share your email with anyone else.</div>
+                        </div>
+                        <div className="mb-3">
+                            <label for="exampleInputPassword1" className="form-label">Password</label>
+                            <input type="password" className="form-control" id="exampleInputPassword1" onChange={handlePasswordChange} value={password} required/>
+                        </div>
+                        <button type="submit" className="btn btn-primary w-100 mt-2 mb-2">Submit</button>
 
-            <form onSubmit={handleFormSubmit}>
-            <input type="email" onChange={handleEmailChange} value={email} required/>
-                <br/>
-                <input type="password" onChange={handlePasswordChange} value={password} required/>
-                <br/>
-                <input type="submit" value="Submit" />
-                <p>New to iHospital? <Link to='/register'>Create New Account</Link></p>
-            </form>
+                    </form>
+                    <button className="btn btn-info w-100 mt-2 mb-2" onClick={handleGoogleLogin}>Sign In with Google</button>
 
-            <button onClick={handleGoogleLogin}>Google Signin</button>
+                    <p>New to iHospital? <Link to="/register">Create an Account</Link></p>
+                </div>
+            </div>
 
-            <button onClick={logOut}>Log Out</button>
-            <Link to='/booking'>Booking</Link>
         </div>
+
+
     );
 };
 

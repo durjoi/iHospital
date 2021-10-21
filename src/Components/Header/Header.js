@@ -18,6 +18,12 @@ const Header = () => {
                         <li className="nav-item">
                             <NavLink className='nav-link' to='/'>Home</NavLink>
                         </li>
+                        <li className="nav-item">
+                            <NavLink className='nav-link' to='/appoinment'>Appoinment</NavLink>
+                        </li>
+                        <li className="nav-item">
+                            <NavLink className='nav-link' to='/report'>Report</NavLink>
+                        </li>
                         {
                             !user.email &&  <li className="nav-item">
                             <NavLink className='nav-link' to='/login'>Login</NavLink>
@@ -32,6 +38,12 @@ const Header = () => {
                         {
                             user.email &&  <li className="nav-item">
                             <button className='nav-link' onClick={logOut}>Logout</button>
+                            </li>
+                        }
+
+                        {
+                            user.email &&  <li className="nav-item">
+                            <span className='nav-link ms-2'>{user.displayName}</span>
                             </li>
                         }
                         
